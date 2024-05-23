@@ -6,6 +6,8 @@ const NewBoard = ({ category }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const apiKey = import.meta.env.VITE_API_KEY
+    console.log(apiKey)
     const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=5e4327e302cc4652a4e1a7241d70c7ef`;
 
     const fetchArticles = async () => {
