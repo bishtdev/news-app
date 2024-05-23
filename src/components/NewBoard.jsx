@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import NewItem from "./NewItem";
 
-const NewBoard = () => {
+const NewBoard = ({category}) => {
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
  
 
-    const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=5e4327e302cc4652a4e1a7241d70c7ef`;
+    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=5e4327e302cc4652a4e1a7241d70c7ef`;
 
     const fetchArticles = async () => {
       try {
@@ -25,7 +25,7 @@ const NewBoard = () => {
     };
 
     fetchArticles();
-  }, []);
+  }, [category]);
 
   if (error) {
     return <div>Error: {error}</div>;
