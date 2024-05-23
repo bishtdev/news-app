@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import NewItem from "./NewItem";
 
-const NewBoard = ({category}) => {
+const NewBoard = ({ category }) => {
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
- 
-
     const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=5e4327e302cc4652a4e1a7241d70c7ef`;
 
     const fetchArticles = async () => {
