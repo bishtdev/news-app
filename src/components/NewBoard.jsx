@@ -6,9 +6,10 @@ const NewBoard = ({ category }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const apiKey = import.meta.env.VITE_API_KEY
+    const apiKey = "215f2ca2413d711615f6d66bb18ff3b0"
     console.log(apiKey)
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=5e4327e302cc4652a4e1a7241d70c7ef`;
+    const url = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=us&max=10&apikey=`+ apiKey;
+    
 
     const fetchArticles = async () => {
       try {
@@ -19,7 +20,7 @@ const NewBoard = ({ category }) => {
         const data = await response.json();
         setArticles(data.articles || []);
       } catch (err) {
-        console.error("Error fetching the news articles:", err);
+        console.error("Error fetching the news articless:", err);
         setError(err.message);
       }
     };
@@ -42,7 +43,7 @@ const NewBoard = ({ category }) => {
             key={news.id || index}
             title={news.title}
             description={news.description}
-            src={news.urlToImage}
+            src={news.Image}
             url={news.url}
           />
         ))
